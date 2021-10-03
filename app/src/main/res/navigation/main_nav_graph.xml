@@ -18,12 +18,11 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.ba.asteroidradar.detail.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail">
+        android:label="fragment_detail">
 
         <argument
             android:name="selectedAsteroid"
-            app:argType="com.ba.asteroidradar.Asteroid"/>
+            app:argType="com.ba.asteroidradar.Asteroid" />
     </fragment>
 
 </navigation>
