@@ -5,9 +5,11 @@
       <map>
         <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14629629629629629" />
         <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14629629629629629" />
+        <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/drawable/ic_status_normal.xml" value="0.19282051282051282" />
         <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/layout/activity_main.xml" value="0.10925925925925926" />
         <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/layout/fragment_detail.xml" value="0.10925925925925926" />
         <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/layout/fragment_main.xml" value="0.1" />
+        <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/layout/list_item_asteroids.xml" value="0.1" />
         <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/menu/main_overflow_menu.xml" value="0.1" />
         <entry key="..\:/Users/darshan.b/AndroidStudioProjects/UdacityProjects/AsteroidRadar/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14629629629629629" />
       </map>

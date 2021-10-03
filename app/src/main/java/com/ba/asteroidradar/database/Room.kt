@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
-@Database(entities = [DatabaseAsteroids::class], version = 1)
+@Database(entities = [DatabaseAsteroid::class], version = 1)
 abstract class AsteroidsDatabase : RoomDatabase() {
     abstract val asteroidsDao: AsteroidsDAO
 }
@@ -24,7 +24,8 @@ fun getDatabase(context: Context): AsteroidsDatabase {
             INSTANCE = Room.databaseBuilder(
                 context.applicationContext,
                 AsteroidsDatabase::class.java, "AsteroidDatabase"
-            ).build()
+            ).addCallback(roomCallback)
+                .build()
         }
     }
     return INSTANCE
@@ -48,8 +49,8 @@ suspend fun addDummyAsteroids() {
 }
 
 
-private fun getDummyAsteroidList(): ArrayList<DatabaseAsteroids> {
-    val asteroidA = DatabaseAsteroids(
+private fun getDummyAsteroidList(): ArrayList<DatabaseAsteroid> {
+    val asteroidA = DatabaseAsteroid(
         id = 2465633,
         codeName = "465633 (2009 JR5)",
         closeApproachDate = "2015-09-08",
@@ -60,7 +61,7 @@ private fun getDummyAsteroidList(): ArrayList<DatabaseAsteroids> {
         isPotentiallyHazardous = true,
     )
 
-    val asteroidB = DatabaseAsteroids(
+    val asteroidB = DatabaseAsteroid(
         id = 3426410,
         codeName = "(2008 QV11)",
         closeApproachDate = "2015-09-08",

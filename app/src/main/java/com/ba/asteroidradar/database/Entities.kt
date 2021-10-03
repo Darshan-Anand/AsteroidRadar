@@ -6,7 +6,7 @@ import com.ba.asteroidradar.Asteroid
 
 
 @Entity()
-data class DatabaseAsteroids constructor(
+data class DatabaseAsteroid constructor(
     @PrimaryKey
     val id: Long,
     val codeName: String,
@@ -18,11 +18,11 @@ data class DatabaseAsteroids constructor(
     val isPotentiallyHazardous: Boolean,
 )
 
-fun List<DatabaseAsteroids>.asDomainModel(): List<Asteroid> {
+fun List<DatabaseAsteroid>.asDomainModel(): List<Asteroid> {
     return map {
         Asteroid(
             id = it.id,
-            codename = it.codeName,
+            codeName = it.codeName,
             closeApproachDate = it.closeApproachDate,
             absoluteMagnitude = it.absoluteMagnitude,
             estimatedDiameter = it.estimatedDiameter,

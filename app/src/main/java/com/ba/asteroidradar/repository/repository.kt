@@ -6,7 +6,7 @@ import com.ba.asteroidradar.Asteroid
 import com.ba.asteroidradar.database.AsteroidsDatabase
 import com.ba.asteroidradar.database.asDomainModel
 
-class Repository(private val database: AsteroidsDatabase) {
+class AsteroidRepository(private val database: AsteroidsDatabase) {
 
     val asteroids : LiveData<List<Asteroid>> =
         Transformations.map(database.asteroidsDao.getAsteroid()){
