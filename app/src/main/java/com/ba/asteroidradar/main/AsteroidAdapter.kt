@@ -9,7 +9,7 @@ import com.ba.asteroidradar.Asteroid
 
 import com.ba.asteroidradar.databinding.ListItemAsteroidsBinding
 
-class AsteroidAdapter :
+class AsteroidAdapter(val asteroidClickListener: OnAsteroidClickListener) :
     ListAdapter<Asteroid, AsteroidAdapter.AsteroidViewHolder>(AsteroidDiffCallback()) {
 
 
@@ -18,7 +18,11 @@ class AsteroidAdapter :
     }
 
     override fun onBindViewHolder(holder: AsteroidViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val asteroid = getItem(position)
+        holder.itemView.setOnClickListener {
+            asteroidClickListener.click(asteroid)
+        }
+        holder.bind(asteroid)
     }
 
     class AsteroidViewHolder constructor(val binding: ListItemAsteroidsBinding) :
@@ -35,6 +39,10 @@ class AsteroidAdapter :
                 return AsteroidViewHolder(binding)
             }
         }
+    }
+
+    class OnAsteroidClickListener(val clickListener: (asteroid: Asteroid) -> Unit) {
+        fun click(asteroid: Asteroid) = clickListener(asteroid)
     }
 }
 
