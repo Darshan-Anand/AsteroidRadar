@@ -1,7 +1,7 @@
 package com.ba.asteroidradar.api
 
 import com.ba.asteroidradar.Asteroid
-import com.ba.asteroidradar.Constants
+import com.ba.asteroidradar.utils.Constants
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
