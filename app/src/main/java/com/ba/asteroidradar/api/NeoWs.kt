@@ -27,10 +27,11 @@ private val retrofit = Retrofit.Builder()
 
 interface NeoApiService {
     @GET("planetary/apod?api_key=${Constants.NeoW_Key}")
-    fun getPhotoOfDay(): PictureOfDay
+    fun getPhotoOfDayAsync(): Deferred<PictureOfDay>
 
     @GET("neo/rest/v1/feed?api_key=${Constants.NeoW_Key}")
-    fun getAsteroids(): Deferred<ResponseBody>
+    fun getAsteroidsAsync(): Deferred<ResponseBody>
+
 }
 
 object NeoWs {

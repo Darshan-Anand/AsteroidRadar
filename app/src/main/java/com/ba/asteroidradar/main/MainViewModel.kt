@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ba.asteroidradar.Asteroid
+import com.ba.asteroidradar.PictureOfDay
 import com.ba.asteroidradar.database.getDatabase
 import com.ba.asteroidradar.repository.AsteroidRepository
 import kotlinx.coroutines.launch
@@ -33,6 +34,10 @@ class MainViewModel(val application: Application) : ViewModel() {
     val navigateToAsteroidDetails: LiveData<Asteroid?>
         get() = _navigateToAsteroidDetails
 
+    private val _pictureOfDay = MutableLiveData<PictureOfDay>()
+    val pictureOfDay: LiveData<PictureOfDay>
+        get() = _pictureOfDay
+
     fun displayAsteroidDetails(asteroid: Asteroid) {
         _navigateToAsteroidDetails.value = asteroid
     }
@@ -44,6 +49,7 @@ class MainViewModel(val application: Application) : ViewModel() {
     fun checkNetworkAndRefresh() {
         _connectedToNetwork.value = false
         refreshAsteroids()
+        refreshPictureOfDay()
     }
 
     private fun refreshAsteroids() {
@@ -56,7 +62,17 @@ class MainViewModel(val application: Application) : ViewModel() {
             _showNoNetworkSnackbar.value = true
     }
 
-    private fun checkNetworkConnection() {
+
+    private fun refreshPictureOfDay(){
+        checkNetworkConnection()
+        if(connectedToNetwork.value == true){
+            viewModelScope.launch {
+                _pictureOfDay.value = repository.refreshPictureOfDay()
+            }
+        }
+    }
+
+    fun checkNetworkConnection() {
         val connMgr = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo: NetworkInfo? = connMgr.activeNetworkInfo
         _connectedToNetwork.value = networkInfo?.isConnected
@@ -64,5 +80,6 @@ class MainViewModel(val application: Application) : ViewModel() {
 
     init {
         refreshAsteroids()
+        refreshPictureOfDay()
     }
 }

@@ -1,8 +1,11 @@
 package com.ba.asteroidradar.database
 
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.Transformations.map
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.ba.asteroidradar.Asteroid
+import com.ba.asteroidradar.PictureOfDay
 
 
 @Entity()
@@ -47,3 +50,5 @@ fun List<Asteroid>.asDatabaseModel() : Array<DatabaseAsteroid>{
         )
     }.toTypedArray()
 }
+
+

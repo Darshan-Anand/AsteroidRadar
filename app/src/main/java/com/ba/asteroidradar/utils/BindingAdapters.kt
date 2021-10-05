@@ -3,6 +3,8 @@ package com.ba.asteroidradar
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.squareup.picasso.Picasso
+import timber.log.Timber
 
 @BindingAdapter("statusIcon")
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
@@ -41,6 +43,25 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
 }
 
 @BindingAdapter("picOfDay")
-fun setPictureOfDay(imgView: ImageView, url : String){
-    //ToDO:
+fun setPictureOfDay(imgView: ImageView, pictureOfDay: PictureOfDay?) {
+    val context = imgView.context
+    if (null!= pictureOfDay && pictureOfDay.url.isNotBlank()) {
+        Timber.d("url:- ${pictureOfDay.url}")
+        Picasso.with(context)
+            .load(pictureOfDay.url)
+            .placeholder(R.drawable.placeholder_picture_of_day)
+            .fit()
+            .centerCrop()
+            .into(imgView)
+        imgView.contentDescription =
+            String.format(
+                context.getString(R.string.nasa_picture_of_day_content_description_format),
+                pictureOfDay.title
+            )
+    }
+    else{
+        Timber.d("image setPictureFailed")
+        imgView.setImageResource(R.drawable.placeholder_picture_of_day)
+        imgView.contentDescription = context.getString(R.string.this_is_nasa_s_picture_of_day_showing_nothing_yet)
+    }
 }
