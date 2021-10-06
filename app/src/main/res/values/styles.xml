@@ -8,8 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AsteroidRecycler" parent="Widget.AppCompat.TextView">
+    <style name="AsteroidRecyclerTiltle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+    
+    <style name="AsteroidRecyclerSubTitle" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
 </resources>
