@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ba.asteroidradar.Asteroid
 import com.ba.asteroidradar.PictureOfDay
+import com.ba.asteroidradar.api.checkNetworkConnection
 import com.ba.asteroidradar.database.getDatabase
 import com.ba.asteroidradar.repository.AsteroidRepository
 import kotlinx.coroutines.launch
@@ -26,10 +27,6 @@ class MainViewModel(val application: Application) : ViewModel() {
     private var _showNoNetworkSnackbar = MutableLiveData<Boolean>()
     val showNoNetworkSnackbar: LiveData<Boolean>
         get() = _showNoNetworkSnackbar
-
-    private val _connectedToNetwork = MutableLiveData<Boolean>()
-    val connectedToNetwork: LiveData<Boolean>
-        get() = _connectedToNetwork
 
     private var _navigateToAsteroidDetails = MutableLiveData<Asteroid?>()
     val navigateToAsteroidDetails: LiveData<Asteroid?>
@@ -48,14 +45,12 @@ class MainViewModel(val application: Application) : ViewModel() {
     }
 
     fun checkNetworkAndRefresh() {
-        _connectedToNetwork.value = false
         refreshAsteroids()
         refreshPictureOfDay()
     }
 
     private fun refreshAsteroids() {
-        checkNetworkConnection()
-        if (connectedToNetwork.value == true) {
+        if (checkNetworkConnection(application)) {
             viewModelScope.launch {
                 repository.refreshAsteroids()
             }
@@ -65,19 +60,11 @@ class MainViewModel(val application: Application) : ViewModel() {
 
 
     private fun refreshPictureOfDay() {
-        checkNetworkConnection()
-        if (connectedToNetwork.value == true) {
+        if (checkNetworkConnection(application)) {
             viewModelScope.launch {
                 _pictureOfDay.value = repository.refreshPictureOfDay()
             }
         }
-    }
-
-    fun checkNetworkConnection() {
-        val connMgr =
-            application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo: NetworkInfo? = connMgr.activeNetworkInfo
-        _connectedToNetwork.value = networkInfo?.isConnected
     }
 
     fun getAsteroidsByWeek() {

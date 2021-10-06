@@ -67,10 +67,6 @@ class MainFragment : Fragment() {
                 }
                 snack.show()
             }
-            viewModel.connectedToNetwork.observe(viewLifecycleOwner) {
-                if (it == true)
-                    Toast.makeText(requireContext(), " Network is back", Toast.LENGTH_SHORT).show()
-            }
         })
 
     }

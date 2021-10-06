@@ -1,5 +1,8 @@
 package com.ba.asteroidradar.api
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import com.ba.asteroidradar.Asteroid
 import com.ba.asteroidradar.utils.Constants
 import org.json.JSONObject
@@ -33,8 +36,10 @@ fun parseAsteroidsJsonResult(jsonResult: JSONObject): ArrayList<Asteroid> {
             val isPotentiallyHazardous = asteroidJson
                 .getBoolean("is_potentially_hazardous_asteroid")
 
-            val asteroid = Asteroid(id, codename, formattedDate, absoluteMagnitude,
-                estimatedDiameter, relativeVelocity, distanceFromEarth, isPotentiallyHazardous)
+            val asteroid = Asteroid(
+                id, codename, formattedDate, absoluteMagnitude,
+                estimatedDiameter, relativeVelocity, distanceFromEarth, isPotentiallyHazardous
+            )
             asteroidList.add(asteroid)
         }
     }
@@ -54,4 +59,10 @@ private fun getNextSevenDaysFormattedDates(): ArrayList<String> {
     }
 
     return formattedDateList
+}
+
+fun checkNetworkConnection(context: Context): Boolean {
+    val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val networkInfo: NetworkInfo? = connMgr.activeNetworkInfo
+    return networkInfo?.isConnected == true
 }
