@@ -16,4 +16,7 @@ interface AsteroidsDAO {
 
     @Query("select * from DatabaseAsteroid where closeApproachDate >= :startDate and closeApproachDate <= :endDate order by closeApproachDate asc ")
     fun getAsteroidByCloseApproachDate(startDate : String, endDate: String) : List<DatabaseAsteroid>
+
+    @Query("delete from DatabaseAsteroid where closeApproachDate < :today ")
+    fun deletePreviousDayAsteroids(today: String): Int
 }

@@ -69,4 +69,10 @@ class AsteroidRepository(private val database: AsteroidsDatabase) {
         return asteroids.asDomainModel()
 
     }
+
+    suspend fun deletePreviousDayAsteroids(){
+        withContext((Dispatchers.IO)){
+            database.asteroidsDao.deletePreviousDayAsteroids(getToday())
+        }
+    }
 }
