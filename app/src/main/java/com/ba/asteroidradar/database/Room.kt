@@ -44,7 +44,7 @@ private val roomCallback = object : RoomDatabase.Callback() {
 suspend fun addDummyAsteroids() {
     withContext(Dispatchers.IO) {
         INSTANCE.asteroidsDao.insertAll(*getDummyAsteroidList().toTypedArray())
-        Timber.i(INSTANCE.asteroidsDao.getAsteroid().toString())
+        Timber.i(INSTANCE.asteroidsDao.getAllAsteroids().toString())
     }
 }
 

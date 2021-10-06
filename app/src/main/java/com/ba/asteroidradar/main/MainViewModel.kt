@@ -13,14 +13,15 @@ import com.ba.asteroidradar.PictureOfDay
 import com.ba.asteroidradar.database.getDatabase
 import com.ba.asteroidradar.repository.AsteroidRepository
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class MainViewModel(val application: Application) : ViewModel() {
 
     private val database = getDatabase(application)
     private val repository = AsteroidRepository(database)
 
-    val asteroidsLists = repository.asteroids
+    private var _asteroidsLists = MutableLiveData<List<Asteroid>>()
+    val asteroidsLists: LiveData<List<Asteroid>>
+        get() = _asteroidsLists
 
     private var _showNoNetworkSnackbar = MutableLiveData<Boolean>()
     val showNoNetworkSnackbar: LiveData<Boolean>
@@ -63,9 +64,9 @@ class MainViewModel(val application: Application) : ViewModel() {
     }
 
 
-    private fun refreshPictureOfDay(){
+    private fun refreshPictureOfDay() {
         checkNetworkConnection()
-        if(connectedToNetwork.value == true){
+        if (connectedToNetwork.value == true) {
             viewModelScope.launch {
                 _pictureOfDay.value = repository.refreshPictureOfDay()
             }
@@ -73,13 +74,36 @@ class MainViewModel(val application: Application) : ViewModel() {
     }
 
     fun checkNetworkConnection() {
-        val connMgr = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connMgr =
+            application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo: NetworkInfo? = connMgr.activeNetworkInfo
         _connectedToNetwork.value = networkInfo?.isConnected
     }
 
+    fun getAsteroidsByWeek() {
+        viewModelScope.launch {
+            _asteroidsLists.value = repository.getAsteroidsByWeek()
+        }
+    }
+
+    fun getAsteroidsByToday() {
+        viewModelScope.launch {
+            _asteroidsLists.value = repository.getAsteroidsByToday()
+        }
+    }
+
+    fun getSavedAsteroids() {
+        viewModelScope.launch {
+            _asteroidsLists.value = repository.getSavedAsteroids()
+        }
+    }
+
     init {
+        viewModelScope.launch {
+            _asteroidsLists.value = repository.getAsteroidsByWeek()
+        }
         refreshAsteroids()
         refreshPictureOfDay()
     }
+
 }
