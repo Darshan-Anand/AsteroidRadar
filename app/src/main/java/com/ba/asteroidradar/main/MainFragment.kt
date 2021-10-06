@@ -59,10 +59,10 @@ class MainFragment : Fragment() {
             if (true == it) {
                 val snack = Snackbar.make(
                     binding.mainFragmentConstraintLayout,
-                    "Network unavailable",
+                    getString(R.string.network_unavailable),
                     Snackbar.LENGTH_INDEFINITE
                 )
-                snack.setAction("Refresh") {
+                snack.setAction(getString(R.string.refresh)) {
                     viewModel.checkNetworkAndRefresh()
                 }
                 snack.show()
