@@ -26,24 +26,26 @@
 
             <ImageView
                 android:id="@+id/activity_main_image_of_the_day"
+                picOfDay="@{viewModel.pictureOfDay}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/placeholder_picture_of_day"
-                picOfDay="@{viewModel.pictureOfDay}"/>
+                tools:ignore="ContentDescription,ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:layout_gravity="bottom"
                 android:background="#55010613"
-                android:text="@string/image_of_the_day" />
+                android:padding="16dp"
+                android:text="@string/image_of_the_day"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
         </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView

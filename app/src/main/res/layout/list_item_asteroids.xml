@@ -46,16 +46,17 @@
 
         <ImageView
             android:id="@+id/hazard_image"
-            android:layout_width="47dp"
-            android:layout_height="43dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/ic_status_potentially_hazardous"
-            app:statusIcon="@{asteroid.potentiallyHazardous}"/>
+            app:statusIcon="@{asteroid.potentiallyHazardous}"
+            tools:ignore="ContentDescription,ImageContrastCheck"
+            tools:srcCompat="@drawable/ic_status_potentially_hazardous" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
