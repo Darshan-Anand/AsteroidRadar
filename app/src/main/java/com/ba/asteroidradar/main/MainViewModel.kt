@@ -53,6 +53,7 @@ class MainViewModel(val application: Application) : ViewModel() {
         if (checkNetworkConnection(application)) {
             viewModelScope.launch {
                 repository.refreshAsteroids()
+                _asteroidsLists.value = repository.getAsteroidsByWeek()
             }
         } else
             _showNoNetworkSnackbar.value = true
