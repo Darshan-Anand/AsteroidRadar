@@ -2,12 +2,11 @@ package com.ba.asteroidradar.main
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.ba.asteroidradar.Asteroid
+import com.ba.asteroidradar.models.Asteroid
 import com.ba.asteroidradar.R
 import com.ba.asteroidradar.databinding.FragmentMainBinding
 import com.google.android.material.snackbar.Snackbar

@@ -3,6 +3,7 @@ package com.ba.asteroidradar
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.ba.asteroidradar.models.PictureOfDay
 import com.squareup.picasso.Picasso
 import timber.log.Timber
 

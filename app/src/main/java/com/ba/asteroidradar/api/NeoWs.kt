@@ -1,7 +1,7 @@
 package com.ba.asteroidradar.api
 
 import com.ba.asteroidradar.utils.Constants
-import com.ba.asteroidradar.PictureOfDay
+import com.ba.asteroidradar.models.PictureOfDay
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

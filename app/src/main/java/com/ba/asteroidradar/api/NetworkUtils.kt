@@ -3,7 +3,7 @@ package com.ba.asteroidradar.api
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import com.ba.asteroidradar.Asteroid
+import com.ba.asteroidradar.models.Asteroid
 import com.ba.asteroidradar.utils.Constants
 import org.json.JSONObject
 import java.text.SimpleDateFormat

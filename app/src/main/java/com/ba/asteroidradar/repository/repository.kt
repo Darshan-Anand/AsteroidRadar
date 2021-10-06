@@ -1,9 +1,7 @@
 package com.ba.asteroidradar.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
-import com.ba.asteroidradar.Asteroid
-import com.ba.asteroidradar.PictureOfDay
+import com.ba.asteroidradar.models.Asteroid
+import com.ba.asteroidradar.models.PictureOfDay
 import com.ba.asteroidradar.api.NeoWs
 import com.ba.asteroidradar.api.parseAsteroidsJsonResult
 import com.ba.asteroidradar.database.AsteroidsDatabase

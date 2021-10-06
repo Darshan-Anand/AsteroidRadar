@@ -1,15 +1,12 @@
 package com.ba.asteroidradar.main
 
 import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ba.asteroidradar.Asteroid
-import com.ba.asteroidradar.PictureOfDay
+import com.ba.asteroidradar.models.Asteroid
+import com.ba.asteroidradar.models.PictureOfDay
 import com.ba.asteroidradar.api.checkNetworkConnection
 import com.ba.asteroidradar.database.getDatabase
 import com.ba.asteroidradar.repository.AsteroidRepository

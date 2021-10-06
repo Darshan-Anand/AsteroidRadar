@@ -1,11 +1,8 @@
 package com.ba.asteroidradar.database
 
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.Transformations.map
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ba.asteroidradar.Asteroid
-import com.ba.asteroidradar.PictureOfDay
+import com.ba.asteroidradar.models.Asteroid
 
 
 @Entity()
